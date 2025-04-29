@@ -7,7 +7,6 @@ Gate::Gate(std::string name, std::vector<std::string> inputs, std::string output
 void Gate::addInputGate(Gate* gate) {
         input_gates.push_back(gate);
     }
-
 void Gate::addOutputGate(Gate* gate) {
     output_gates.push_back(gate);
 }
@@ -139,7 +138,7 @@ Gate* createGate(const std::string& type,
 // The data format is a directed graph, where each node (gate), has pointers to it's INPUT GATES
 std::unordered_map<std::string, Gate*> parseGateCSV(const std::string& filename) {
     std::unordered_map<std::string, Gate*> gates; // Maps gate name to gate
-                                                
+
     // Maps to add pointers, to previous and next gates. (gates that current gates depends on directly and gates that depend on current gate directly)
     // Needed to avoid nested loops, where we need to search all the gates.
     std::unordered_map<std::string, Gate*> outputs; // Maps output name to gate
@@ -154,7 +153,6 @@ std::unordered_map<std::string, Gate*> parseGateCSV(const std::string& filename)
     }
 
     std::getline(file, line); // Skip header
-
     while (std::getline(file, line)) {
         std::istringstream ss(line);
         std::string name, type, in1, in2, out;

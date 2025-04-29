@@ -2,10 +2,9 @@
 
 int main(int argc, char* argv[]) {
     // Load netlist into a graph, sort gates topologically
-    std::string filename = "netlist.csv";
+    std::string filename = "./netlist.csv";
     auto gates = parseGateCSV(filename);
     auto sorted = TopologicalSort(gates);
-
     // Prepare variables vector
     auto variables = getVariableVector(gates);
 

@@ -4,7 +4,7 @@
 #include <ranges>
 
 TEST(MUX, NetListSimulation) {
-    std::unordered_map<std::string, Gate*> gates = parseGateCSV("./tests/netlists/mux.csv");
+    std::unordered_map<std::string, Gate*> gates = parseGateCSV("./netlists/mux.csv");
     auto sorted = TopologicalSort(gates);
     
     std::vector<std::unordered_map<std::string, bool>> test_vectors = {
@@ -37,4 +37,9 @@ TEST(MUX, NetListSimulation) {
                                            << ", B=" << inputs.at("B") 
                                            << ", S=" << inputs.at("S");
     }
+}
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
